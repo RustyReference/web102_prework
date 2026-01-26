@@ -140,7 +140,7 @@ allBtn.addEventListener("click", showAllGames);
 const descriptionContainer = document.getElementById("description-container");
 
 // use filter or reduce to count the number of unfunded games
-let numUnfunded = GAMES_JSON.filter((game) => game.pledged > game.goal).length;
+let numUnfunded = GAMES_JSON.filter((game) => game.pledged < game.goal).length;
 
 // create a string that explains the number of unfunded games using the ternary operator
 let numGames = GAMES_JSON.length;
