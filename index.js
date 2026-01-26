@@ -32,7 +32,7 @@ function addGamesToPage(games) {
         // create a new div element, which will become the game card
         // add the class game-card to the list
         let newDiv = document.createElement("div");
-        newDiv.classList.add("game-card");
+        newDiv.classList.add("game-card", "display", "light");
 
         // set the inner HTML using a template literal to display some info 
         // about each game
@@ -134,7 +134,7 @@ allBtn.addEventListener("click", showAllGames);
 /*************************************************************************************
  * Challenge 6: Add more information at the top of the page about the company.
  * Skills used: template literals, ternary operator
-*/
+ */
 
 // grab the description container
 const descriptionContainer = document.getElementById("description-container");
@@ -165,7 +165,7 @@ descriptionContainer.appendChild(displayMsg);
 const firstGameContainer = document.getElementById("first-game");
 const secondGameContainer = document.getElementById("second-game");
 
-const sortedGames =  GAMES_JSON.sort( (item1, item2) => {
+const sortedGames =  GAMES_JSON.sort((item1, item2) => {
     return item2.pledged - item1.pledged;
 });
 
@@ -181,3 +181,14 @@ firstGameContainer.appendChild(topPledgedName);
 let secondTopPledgedName = document.createElement("div");
 secondTopPledgedName.innerHTML = second.name;
 secondGameContainer.appendChild(secondTopPledgedName);
+
+/****** EXTRA FEATURESs ******/
+let darkModeToggle = document.getElementById("light-dark-mode");
+darkModeToggle.addEventListener("click", () => {
+    let newColor = document.getElementById("body").classList.contains("dark") ? "light" : "dark";
+    let oldColor = newColor === "dark" ? "light" : "dark";
+    console.log("what is here: ", `${oldColor }`, document.querySelectorAll(`.display.${oldColor}`));
+    document.getElementById("body").classList.replace(oldColor, newColor);
+    document.querySelectorAll(`.display.${oldColor}`)
+        .forEach(element => element.classList.replace(oldColor, newColor));
+});
